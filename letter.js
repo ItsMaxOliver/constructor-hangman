@@ -1,11 +1,9 @@
 class Letter {
-    constructor(char, guessed) {
+    constructor(char) {
         this.char = char;
-        this.guessed = false;
         
         this.charCheck = function(input) {
             if(input === char) {
-                this.guessed = true;
                 return true;
             }
             else {
@@ -13,19 +11,21 @@ class Letter {
             }
         }
         this.returnChar = function() {
-            if (this.guessed) {
+            if (this.charCheck) {
                 return char;
+                
             }
             else {
                 return "_";
+                
             }
         }
     }
 }
 //--------TESTING----------
-//var test = new Letter("a", false)
+//var b = new Letter("b", false);
 //
-//console.log(test.charCheck("b"));
-//console.log(test.returnChar());
+//console.log(b.charCheck("b"));
+//console.log(b.returnChar());
 
 module.exports = Letter;
