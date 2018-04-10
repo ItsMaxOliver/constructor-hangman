@@ -1,34 +1,34 @@
 var Letter = require("./letter.js");
 
-var a = new Letter("a", false);
-var b = new Letter("b", false);
-var c = new Letter("c", false);
+var f = new Letter("f");
+var u = new Letter("u");
+var n = new Letter("n");
 
 class Word {
     constructor() {
         this.characters = [];
         
-        this.toString = function() {
+        this.isGuessed = function(input) {
             this.characters.forEach(item => {
-                console.log(item.returnChar());
-                console.log("trying to make a word");
+                return item.charCheck(input);
             })
         }
         
-        this.isGuessed = function(input) {
-            this.characters.forEach(Letter => {
-                 Letter.charCheck(input);
+        this.returnWord = function() {
+            var word = [];
+            this.characters.forEach(item => {
+                word.push(item.returnChar());
             })
+            console.log(word.join(""));
         }
     }
 }
 //-----------TESTING---------
 var testWord = new Word();
-testWord.characters.push(a, b, c);
-//console.log(testWord.characters);
-//console.log(testWord.isGuessed("a"));
-console.log(testWord.isGuessed("a", "b", "d"));
-console.log(testWord.toString());
+testWord.characters.push(f, u, n);
 
+testWord.isGuessed("u");
+testWord.isGuessed("n");
+//testWord.returnWord();
 
 module.exports = Word;

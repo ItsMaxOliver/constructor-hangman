@@ -4,10 +4,10 @@ class Letter {
         
         this.charCheck = function(input) {
             if(input === char) {
-                return true;
+                return console.log(char);
             }
             else {
-                return false;
+                return console.log("_");
             }
         }
         this.returnChar = function() {
@@ -23,9 +23,12 @@ class Letter {
     }
 }
 //--------TESTING----------
-//var b = new Letter("b", false);
+//var b = new Letter("b");
+//var f = new Letter("f");
+//var u = new Letter("u");
+//var n = new Letter("n");
 //
-//console.log(b.charCheck("b"));
-//console.log(b.returnChar());
+//n.charCheck("b");
+
 
 module.exports = Letter;
