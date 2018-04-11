@@ -27,7 +27,7 @@ class Word {
             var display = "";
             this.characters.forEach(item => {
                 var currentChar = item.charRender();
-                display += currentChar;
+                display += currentChar + " ";
             });
             return display;
         };
@@ -46,13 +46,13 @@ class Word {
     }
 }
 
-let amazing = new Word("amazing");
-amazing.getChars();
-console.log(amazing.wordRender());
-amazing.hasChar("z");
-console.log(amazing.wordRender());
-amazing.hasChar("a");
-console.log(amazing.wordRender());
-
+// let amazing = new Word("amazing");
+// amazing.getChars();
+// console.log(amazing);
+// console.log(amazing.wordRender());
+// amazing.hasChar("z");
+// console.log(amazing.wordRender());
+// amazing.hasChar("a");
+// console.log(amazing.wordRender());
 
 module.exports = Word;
