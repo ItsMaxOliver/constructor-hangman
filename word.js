@@ -15,11 +15,17 @@ class Word {
         // creates new Letter objects for each character in the word
         
         this.hasChar = function(input) {
+            let letterAppears = false;
+            
             this.characters.forEach(item => {
                 if(item.char === input) {
                     item.appear = true;
+                    letterAppears = true;
                 }
             })
+            
+            return letterAppears;
+            
         };
         // if the user input equals a letter in the word, the letter should be shown
         
