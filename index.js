@@ -5,7 +5,6 @@ var guessesLeft = 7;
 var guessCount = 0;
 var newWord;
 
-//not 100% how to access the value (word chosen) returned from the promise in other places 
 function generateRandomWord() {
     
     fs.readFile("words.txt", "utf8")
@@ -34,28 +33,37 @@ function promptUser () {
                 message: "\nWhat letter do you want to guess?"
             }
         ]).then(answer => {
-                guessCount++;
+            guessCount++;
             if (newWord.hasChar(answer.whichLetter)) {
                 console.log("\nCORRECT!");
                 console.log(newWord.wordRender());
-                console.log("\nYou have " + guessesLeft + " guesses left.");
+                console.log("\nYou have " + guessesLeft + " guesses left.\n");
+                
                 newWord.wordGuessed();
             }
             else {
                 console.log("\nSorry that is wrong.");
                 console.log(newWord.wordRender());
                 guessesLeft--;
-                console.log("\nYou have " + guessesLeft + " guesses left.");
+                console.log("\nYou have " + guessesLeft + " guesses left.\n");
+                
                 newWord.wordGuessed();
+                
                 if (guessesLeft === 0) {
                     console.log("GAMEOVER!");
+                    return;
                 }
             }
+            
             if(guessesLeft > 0 && newWord.wordFound === false) {
                 promptUser();
             }
             else {
-                return;
+                guessesLeft = 7;
+                console.log("You guessed the word correctly!\n");
+                console.log("Here is a new word! See if you can get this one right!\n");
+                guessCount = 0;
+                generateRandomWord();
             }
         })
     }// add a catch here?
