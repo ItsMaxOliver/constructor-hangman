@@ -6,7 +6,6 @@ var guessCount = 0;
 var newWord;
 
 function generateRandomWord() {
-    
     fs.readFile("words.txt", "utf8")
         .then(function (data) {
             var availableWords = data.split(",");
@@ -19,13 +18,13 @@ function generateRandomWord() {
             return newWord;
         }).then(function() {           
             promptUser();
-            })
+        }).catch(function(err){
+            console.log(err);
+        })
 }
 
 function promptUser () {
-    
     if (guessCount < newWord.characters.length + guessesLeft) {
-        
         inquirer.prompt([
             {
                 name: "whichLetter",
@@ -65,8 +64,10 @@ function promptUser () {
                 guessCount = 0;
                 generateRandomWord();
             }
+        }).catch(function(err){
+        console.log(err);
         })
-    }// add a catch here?
+    }
 }
 
 generateRandomWord();
