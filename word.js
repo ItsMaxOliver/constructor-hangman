@@ -52,13 +52,4 @@ class Word {
     }
 }
 
-// let amazing = new Word("amazing");
-// amazing.getChars();
-// console.log(amazing);
-// console.log(amazing.wordRender());
-// amazing.hasChar("z");
-// console.log(amazing.wordRender());
-// amazing.hasChar("a");
-// console.log(amazing.wordRender());
-
 module.exports = Word;
