@@ -18,13 +18,15 @@ function generateRandomWord() {
             
             console.log(newWord.wordRender());
             return newWord;
-        }).then(function() {
-                promptUser()
+        }).then(function() {           
+            promptUser();
             })
 }
 
 function promptUser () {
+    
     if (guessCount < newWord.characters.length + guessesLeft) {
+        
         inquirer.prompt([
             {
                 name: "whichLetter",
@@ -37,17 +39,19 @@ function promptUser () {
                 console.log("\nCORRECT!");
                 console.log(newWord.wordRender());
                 console.log("\nYou have " + guessesLeft + " guesses left.");
+                newWord.wordGuessed();
             }
             else {
                 console.log("\nSorry that is wrong.");
                 console.log(newWord.wordRender());
                 guessesLeft--;
                 console.log("\nYou have " + guessesLeft + " guesses left.");
+                newWord.wordGuessed();
                 if (guessesLeft === 0) {
                     console.log("GAMEOVER!");
                 }
             }
-            if(guessesLeft > 0) {
+            if(guessesLeft > 0 && newWord.wordFound === false) {
                 promptUser();
             }
             else {
@@ -56,8 +60,5 @@ function promptUser () {
         })
     }// add a catch here?
 }
-function game() {
-    generateRandomWord();
-}
 
-game();
+generateRandomWord();

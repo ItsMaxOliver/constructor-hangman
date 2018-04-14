@@ -44,8 +44,7 @@ class Word {
                 return item.appear === true;
             }))
             {
-                this.wordFound = true;
-                return true;
+                return this.wordFound = true;
             }
         };
         // checks to see if every item in the character array appears and if does, returns true so that we can generate another random word
