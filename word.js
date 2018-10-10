@@ -1,4 +1,4 @@
-var Letter = require("./letter.js");
+const Letter = require("./letter.js");
 
 class Word {
     constructor(word) {
@@ -6,15 +6,15 @@ class Word {
         this.characters = [];
         this.wordFound = false;
         
-        this.getChars = function() {
-            for (var i = 0; i < this.word.length; i++) {
-                var newLetter = new Letter(this.word[i]);
+        this.getChars = () => {
+            for (let i = 0; i < this.word.length; i++) {
+                let newLetter = new Letter(this.word[i]);
                 this.characters.push(newLetter);
             }
         };
         // creates new Letter objects for each character in the word
         
-        this.hasChar = function(input) {
+        this.hasChar = input => {
             let letterAppears = false;
             
             this.characters.forEach(item => {
@@ -25,25 +25,22 @@ class Word {
             })
             
             return letterAppears;
-            
         };
-        // if the user input equals a letter in the word, the letter should be shown
+        // if the user input equals a letter in the word, the letter will be shown
         
-        this.wordRender = function() {
-            var display = "";
+        this.wordRender = () => {
+            let display = "";
             this.characters.forEach(item => {
-                var currentChar = item.charRender();
+                let currentChar = item.charRender();
+                // sets the currentChar to the charRendered from the Letter constructor function
                 display += currentChar + " ";
             });
             return display;
         };
-        // should return the string with each character rendered
+        // returns the string with each character rendered
         
-        this.wordGuessed = function() {
-            if (this.characters.every(item => {
-                return item.appear === true;
-            }))
-            {
+        this.wordGuessed = () => {
+            if (this.characters.every( item => item.appear === true )) {
                 return this.wordFound = true;
             }
         };
