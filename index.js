@@ -42,7 +42,7 @@ function promptUser() {
 
                 if( guessedChars.includes(guess) ){
                     // checks to see if the user has already guessed that letter by checking against guessedChar array
-                    console.log(chalk.red(`\nYou already guessed that letter. Try a different one.\n`));
+                    console.log(chalk.red(`\nYou already guessed that letter. Try a different one.`));
                     guessesLeft++;
                     // makes it so that typing in the same letter over and over wont count against them
                 }
@@ -53,9 +53,8 @@ function promptUser() {
                 /**** User guesses correctly ****/
                 if ( newWord.hasChar(guess) ) {
                     console.log(chalk.green(`\nCorrect!\n`));
-                    console.log(chalk.cyan(`Guessed Letters: ${guessedChars}`));
+                    console.log(chalk.cyan(`Guessed Letters: ${guessedChars} \n`));
                     // shows a line of guessed chars
-                    console.log("");
                     console.log(chalk.magenta(newWord.wordRender()));
                     // shows the underscores of word/phrase the user is trying to guess
                     console.log("");
@@ -65,10 +64,9 @@ function promptUser() {
                 /**** User guesses incorrectly ****/
                 else {
                     guessesLeft--;
-                    console.log(chalk.red(`\nSorry that is wrong.\n`));
-                    console.log(chalk.cyan(`Guessed Letters: ${guessedChars}`));
+                    console.log(chalk.red.bold(`\nSorry that is wrong.\n`));
+                    console.log(chalk.cyan(`Guessed Letters: ${guessedChars}\n`));
                     // shows a line of guessed chars
-                    console.log("");
                     console.log(chalk.magenta(newWord.wordRender()));
                     // shows the underscores of word/phrase the user is trying to guess
 
@@ -80,11 +78,10 @@ function promptUser() {
                         /**** User guesses incorrectly and has no more attempts left ****/
                         else {
                             console.log("");
-                            console.log(chalk.blue(`GAMEOVER! The correct word/phrase was ${newWord}`));
-                            // shows what the correct word was
+                            console.log(chalk.blue.bold(`GAMEOVER!`));
+                            // displays that the player lost
                             return;
                             // exits the enitre game
-                            //*******add another prompt to see if user wants to play again
                         }
                     newWord.wordGuessed();
                     // runs function to see if user completed the word/phrase
